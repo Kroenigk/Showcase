@@ -1,24 +1,71 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+// Import HTML, CSS, and route definitions
+import homeHtml from './home.html?raw';
+import styles from './style.css?raw';
+import routes from './router';
+import sidebarHtml from './sidebar/sidebar.html?raw';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+// Define Web Component
+class Showcase extends HTMLElement {
+  constructor() {
+    super();
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+    // Shadow DOM setup
+    const shadow = this.attachShadow({ mode: 'open' });
+
+    // Inject styles
+    const styleElement = document.createElement('style');
+    styleElement.textContent = styles;
+    shadow.appendChild(styleElement);
+
+    // Inject base layout HTML
+    const baseLayout = document.createElement('div');
+    baseLayout.innerHTML = homeHtml;
+    shadow.appendChild(baseLayout);
+  }
+
+  connectedCallback() {
+    // Inject sidebar into app root (in light DOM)
+    const appRoot = document.getElementById('app')!;
+    appRoot.innerHTML = sidebarHtml;
+
+    // Add dynamic route view container
+    const contentRoot = document.createElement('div');
+    contentRoot.id = 'page';
+    appRoot.appendChild(contentRoot);
+
+    // Handle link clicks in sidebar
+    appRoot.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = (e.target as HTMLAnchorElement).getAttribute('href');
+        if (href) {
+          history.pushState({}, '', href);
+          navigateTo(href);
+        }
+      });
+    });
+
+    // Route handler
+    function navigateTo(path: string) {
+      const route = routes.find(r => r.path === path);
+      if (route) {
+        route.component().then(html => {
+          contentRoot.innerHTML = html;
+        });
+      } else {
+        contentRoot.innerHTML = '<p>404 – Page Not Found</p>';
+      }
+    }
+
+    // Initial load
+    navigateTo(location.pathname);
+
+    // Handle browser navigation
+    window.onpopstate = () => {
+      navigateTo(location.pathname);
+    };
+  }
+}
+
+// Register custom element
+customElements.define('showcase-root', Showcase);
