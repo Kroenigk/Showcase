@@ -1,17 +1,18 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: "/Showcase/showcase", // important for GitHub Pages
+  base: "/Showcase/showcase",
+  plugins: [react()],
   
   // Build configuration
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false, // Set to true if you want source maps in production
+    sourcemap: false,
     rollupOptions: {
       input: {
         main: './index.html',
-        // Add other HTML entry points if you have multiple pages
       }
     }
   },
@@ -19,7 +20,7 @@ export default defineConfig({
   // Development server configuration
   server: {
     port: 3000,
-    open: true, // Automatically open browser on dev server start
+    open: true,
     cors: true
   },
 
@@ -31,7 +32,7 @@ export default defineConfig({
 
   // CSS configuration
   css: {
-    devSourcemap: true // Enable CSS source maps in development
+    devSourcemap: true
   }
 });
 
