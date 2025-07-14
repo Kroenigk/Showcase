@@ -1,22 +1,41 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../style.css';
+import './sidebar.css';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onClose: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   const navigate = useNavigate();
 
   const handleNavigation = (path: string) => {
     navigate(path);
+    onClose(); // Close sidebar after navigation
   };
 
   return (
-    <div className="sidebar">
-      <h2>Navigation</h2>
-      <ul>
-        <button onClick={() => handleNavigation('/')}>Home</button>
-        <button onClick={() => handleNavigation('/skills')}>Skills</button>
-        <button onClick={() => handleNavigation('/projects')}>Projects</button>
-        <button onClick={() => handleNavigation('/resume')}>Resume</button>
-      </ul>
+    <div className="sidebar open"> 
+      <div className="sidebar-header">
+        <h2>Menu</h2>
+      </div>
+      
+      <nav className="sidebar-nav">
+        <ul className="sidebar-menu">
+          <li>
+            <button onClick={() => handleNavigation('/')}>🏠 Home</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavigation('/skills')}>💡 Skills</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavigation('/projects')}>🚀 Projects</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavigation('/resume')}>📄 Resume</button>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './resume.css';
 
 const Resume: React.FC = () => {
@@ -24,18 +23,6 @@ const Resume: React.FC = () => {
           Strong problem-solving skills and a commitment to writing clean, maintainable code.
         </p>
       </section>
-
-      <div className="navigation" style={{ textAlign: 'center', marginTop: '2rem' }}>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/skills">
-          <button>Skills</button>
-        </Link>
-        <Link to="/projects">
-          <button>Projects</button>
-        </Link>
-      </div>
     </div>
   );
 };

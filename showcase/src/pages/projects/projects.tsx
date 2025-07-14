@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './projects.css';
 
 const Projects: React.FC = () => {
@@ -17,18 +16,6 @@ const Projects: React.FC = () => {
           <h2>Alchemy Artisans (VR Game)</h2>
           <p>Unity-based VR crafting game with Oculus integration and hand gesture recognition.</p>
         </div>
-      </div>
-
-      <div className="navigation">
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/skills">
-          <button>View Skills</button>
-        </Link>
-        <Link to="/resume">
-          <button>View Resume</button>
-        </Link>
       </div>
     </div>
   );
