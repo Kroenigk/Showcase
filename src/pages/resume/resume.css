@@ -1,0 +1,241 @@
+/* Resume Page Styling */
+.resume-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+/* Resume Header */
+.resume-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.resume-header h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.resume-header .title {
+  font-size: 1.2em;
+  color: #7f8c8d;
+  margin: 10px 0;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info a {
+  color: #64ffda;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contact-info a:hover {
+  color: #ffffff;
+}
+
+.contact-info span {
+  color: #bdc3c7;
+  font-weight: 300;
+}
+
+/* Download Button - Matching current theme */
+.download-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background-color: rgba(52, 152, 219, 0.8);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.download-btn:hover {
+  background-color: rgba(41, 128, 185, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn:focus {
+  outline: 2px solid #64ffda;
+  outline-offset: 2px;
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Resume Sections */
+.resume-section {
+  margin-bottom: 2.5rem;
+}
+
+.resume-section h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.section-content {
+  margin-left: 1rem;
+}
+
+/* Experience Items */
+.experience-item,
+.project-item {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-item h3,
+.project-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: #64ffda;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.job-details,
+.project-details {
+  margin: 0 0 1rem 0;
+  color: #bdc3c7;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Lists */
+.resume-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.resume-section li {
+  margin-bottom: 0.5rem;
+  color: #f8f9fa;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.skill-category {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+.skill-category strong {
+  color: #64ffda;
+  margin-right: 0.5rem;
+}
+
+/* General Text */
+.resume-section p {
+  margin: 0.5rem 0;
+  color: #f8f9fa;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+.resume-section strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.resume-section em {
+  color: #bdc3c7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .resume-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contact-info span {
+    display: none;
+  }
+  
+  .experience-item,
+  .project-item {
+    padding: 1rem;
+  }
+  
+  .section-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-header h1 {
+    font-size: 2rem;
+  }
+  
+  .resume-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .experience-item h3,
+  .project-item h3 {
+    font-size: 1.1rem;
+  }
+}

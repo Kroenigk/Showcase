@@ -18,18 +18,28 @@ function App() {
   };
 
   return (
-    <Router basename="/Showcase/showcase">
+    <Router basename="/Showcase">
       <div className="app-container">
-        {/* Hamburger Menu Button */}
+        {/* Fixed Hamburger Button - Always visible */}
         <button 
-          className="hamburger-button" 
+          className={`hamburger-button ${isSidebarOpen ? 'open' : ''}`}
           onClick={toggleSidebar}
-          aria-label="Toggle menu"
+          aria-label={isSidebarOpen ? "Close menu" : "Open menu"}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
+
+        {/* Fixed Page Header */}
+        <header className="page-header">
+          <div className={`header-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+            <div>
+              <h1>Kylie Roenigk</h1>
+              <p className="header-subtitle">Computer Science Student | Project Management Certified</p>
+            </div>
+          </div>
+        </header>
 
         {/* Sidebar */}
         {isSidebarOpen && (
@@ -48,6 +58,20 @@ function App() {
             <Route path="/resume" element={<Resume />} />
           </Routes>
         </main>
+
+        {/* Fixed Page Footer */}
+        <footer className="page-footer">
+          <div className="footer-content">
+            <div className="footer-left">
+              <p>&copy; 2024 Kylie Roenigk. All rights reserved.</p>
+              <p>Built with React, TypeScript, and Vite</p>
+            </div>
+            <div className="footer-right">
+              <a href="https://www.linkedin.com/in/kylie-roenigk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/Kroenigk" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </footer>
       </div>
     </Router>
   );
