@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: "/Showcase/",
+  base: '/Showcase/',
   plugins: [react()],
-  
+
   // Build configuration
   build: {
     outDir: 'dist',
@@ -13,26 +13,25 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-      }
-    }
+      },
+    },
   },
 
   // Development server configuration
   server: {
     port: 3000,
     open: true,
-    cors: true
+    cors: true,
   },
 
   // Preview server configuration (for 'npm run preview')
   preview: {
     port: 4173,
-    open: true
+    open: true,
   },
 
   // CSS configuration
   css: {
-    devSourcemap: true
-  }
+    devSourcemap: true,
+  },
 });
-

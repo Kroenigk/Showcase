@@ -19,7 +19,7 @@ const Skills: React.FC = () => {
               <li>Java</li>
             </ul>
           </div>
-          
+
           <div className="skill-category">
             <h3>🌐 Web Development</h3>
             <ul>
@@ -31,7 +31,7 @@ const Skills: React.FC = () => {
               <li>Web Components</li>
             </ul>
           </div>
-          
+
           <div className="skill-category">
             <h3>🛠️ Tools & Technologies</h3>
             <ul>
@@ -43,7 +43,7 @@ const Skills: React.FC = () => {
               <li>JIRA</li>
             </ul>
           </div>
-          
+
           <div className="skill-category">
             <h3>👥 Professional Skills</h3>
             <ul>

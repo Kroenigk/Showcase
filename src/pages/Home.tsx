@@ -13,15 +13,25 @@ const Home: React.FC = () => {
       <div className="topBar">
         <h1>Welcome to My Showcase</h1>
       </div>
-      
+
       <div className="aboutMe">
-        <p>Hi, I’m Kylie — a Computer Science student with a passion for crafting clean, intuitive digital experiences. This showcase highlights the skills and projects I’ve built along the way</p>
+        <p>
+          Hi, I’m Kylie — a Computer Science student with a passion for crafting
+          clean, intuitive digital experiences. This showcase highlights the
+          skills and projects I’ve built along the way
+        </p>
       </div>
-      
+
       <div className="navigation">
-        <button type="button" onClick={() => handleNavigation('/skills')}>View Skills</button>
-        <button type="button" onClick={() => handleNavigation('/projects')}>View Projects</button>
-        <button type="button" onClick={() => handleNavigation('/resume')}>View Resume</button>
+        <button type="button" onClick={() => handleNavigation('/skills')}>
+          View Skills
+        </button>
+        <button type="button" onClick={() => handleNavigation('/projects')}>
+          View Projects
+        </button>
+        <button type="button" onClick={() => handleNavigation('/resume')}>
+          View Resume
+        </button>
       </div>
     </div>
   );

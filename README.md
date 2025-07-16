@@ -1,54 +1,56 @@
-# 🎓 Kylie Roenigk's Developer Showcase
+# 🌟 Kylie Roenigk – Developer Showcase
 
-Hello! My name is Kylie Roenigk, and I'm a Computer Science major with a Certification in Project Management. This repository serves as a personal portfolio site to highlight the skills, projects, and experiences I've gained through my academic journey and software engineering internship.
+Welcome to my personal developer showcase! I'm **Kylie Roenigk**, a Computer Science major at Ohio University with a certification in Project Management. This project serves as a visual and interactive portfolio highlighting the skills, experience, and projects I’ve developed during my academic journey and software engineering internships.
 
----
+## 🔎 About This Project
 
-## 🌟 About the Project
+This web app was built using **React**, **TypeScript**, and **Vite**, and is structured as a single-page application (SPA) with dynamic routing. It provides an overview of my:
 
-This site is designed to showcase:
+- **Resume** – View or download my latest resume in PDF format.
+- **Skills** – A categorized breakdown of my technical proficiencies.
+- **Projects** – A closer look at the hands-on projects I've contributed to or led.
+- **Links** – Quick access to my [LinkedIn](https://www.linkedin.com/in/kylie-roenigk) and [GitHub](https://github.com/kylieroenigk).
 
-- ✅ A downloadable version of my resume
-- 💼 A list of technical skills I've developed
-- 🛠️ Selected projects that demonstrate what I've built
-- 🔗 Direct links to my LinkedIn and GitHub profiles
-It's built using:
-- ⚛️ React + TypeScript
-- 🚀 Vite for fast development and bundling
-- 📁 GitHub Pages for deployment
-- 🧭 React Router for page navigation
+## 🧠 Tech Stack
 
----
-Section	Description
-- Home: 	Welcome message and quick access to Skills and Projects
-- Skills:	Overview of the technologies and tools I'm proficient in
-- Projects: 	Highlights of select software and development projects
-- Resume: 	View and download my latest resume
--Sidebar Navigation: 	Persistent nav bar for seamless routing between pages
-
----
+- **Frontend**: React + TypeScript
+- **Routing**: React Router DOM
+- **Tooling**: Vite
+- **Styling**: CSS Modules
+- **Deployment**: GitHub Pages
 
 ## 🚀 Getting Started
 
-🔧 Installation
-Clone the repository:
-```
-git clone https://github.com/yourusername/Showcase.git
-cd Showcase/showcase
-```
-Install dependencies:
-```
+To run the project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/showcase.git
+cd showcase
+
+# Install dependencies
 npm install
-```
-Run the app locally:
-```
+
+# Start the development server
 npm run dev
-```
-Build for production:
-```
-npm run build
 ```
 
 ---
+
+## 📌 Features
+
+- Responsive layout with dynamic routing
+- Sidebar toggle and navigation
+- Downloadable resume PDF
+- Clean and accessible UI
+
+---
+
 ## License
+
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
+
+---
+
+Thanks for visiting! 😊
+Feel free to connect with me on LinkedIn or explore more of my work on GitHub.

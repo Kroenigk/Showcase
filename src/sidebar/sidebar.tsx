@@ -15,24 +15,30 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="sidebar open"> 
+    <div className="sidebar open">
       <div className="sidebar-header">
         <h2>Menu</h2>
       </div>
-      
+
       <nav className="sidebar-nav">
         <ul className="sidebar-menu">
           <li>
             <button onClick={() => handleNavigation('/')}>🏠 Home</button>
           </li>
           <li>
-            <button onClick={() => handleNavigation('/skills')}>💡 Skills</button>
+            <button onClick={() => handleNavigation('/skills')}>
+              💡 Skills
+            </button>
           </li>
           <li>
-            <button onClick={() => handleNavigation('/projects')}>🚀 Projects</button>
+            <button onClick={() => handleNavigation('/projects')}>
+              🚀 Projects
+            </button>
           </li>
           <li>
-            <button onClick={() => handleNavigation('/resume')}>📄 Resume</button>
+            <button onClick={() => handleNavigation('/resume')}>
+              📄 Resume
+            </button>
           </li>
         </ul>
       </nav>

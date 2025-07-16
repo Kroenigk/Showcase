@@ -21,10 +21,10 @@ function App() {
     <Router basename="/Showcase">
       <div className="app-container">
         {/* Fixed Hamburger Button - Always visible */}
-        <button 
+        <button
           className={`hamburger-button ${isSidebarOpen ? 'open' : ''}`}
           onClick={toggleSidebar}
-          aria-label={isSidebarOpen ? "Close menu" : "Open menu"}
+          aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
         >
           <span></span>
           <span></span>
@@ -33,10 +33,14 @@ function App() {
 
         {/* Fixed Page Header */}
         <header className="page-header">
-          <div className={`header-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+          <div
+            className={`header-content ${isSidebarOpen ? 'sidebar-open' : ''}`}
+          >
             <div>
               <h1>Kylie Roenigk</h1>
-              <p className="header-subtitle">Computer Science Student | Project Management Certified</p>
+              <p className="header-subtitle">
+                Computer Science Student | Project Management Certified
+              </p>
             </div>
           </div>
         </header>
@@ -67,8 +71,20 @@ function App() {
               <p>Built with React, TypeScript, and Vite</p>
             </div>
             <div className="footer-right">
-              <a href="https://www.linkedin.com/in/kylie-roenigk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://github.com/Kroenigk" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a
+                href="https://www.linkedin.com/in/kylie-roenigk/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/Kroenigk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
             </div>
           </div>
         </footer>
