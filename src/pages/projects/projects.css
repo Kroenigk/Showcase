@@ -151,7 +151,8 @@
   margin-top: 1rem;
 }
 
-.project-btn {
+.project-btn,
+a.project-btn {
   flex: 1;
   padding: 0.75rem 1rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -163,27 +164,233 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none; /* Remove underline for anchor tags */
+  display: inline-flex; /* Make anchor behave like button */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  text-align: center; /* Center text */
+  box-sizing: border-box; /* Include padding/border in width calculation */
 }
 
-.project-btn:hover {
+.project-btn:hover,
+a.project-btn:hover {
   background-color: rgba(41, 128, 185, 0.9);
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
+  text-decoration: none; /* Ensure no underline on hover */
 }
 
-.project-btn.secondary {
+.project-btn.secondary,
+a.project-btn.secondary {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-.project-btn.secondary:hover {
+.project-btn.secondary:hover,
+a.project-btn.secondary:hover {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
+  text-decoration: none; /* Ensure no underline on hover */
 }
 
-.project-btn:focus {
+.project-btn:focus,
+a.project-btn:focus {
   outline: 2px solid #64ffda;
   outline-offset: 2px;
+  text-decoration: none; /* Remove underline on focus */
+}
+
+.project-btn:active,
+a.project-btn:active {
+  transform: translateY(0);
+  text-decoration: none; /* Remove underline on active */
+}
+
+.project-btn:visited,
+a.project-btn:visited {
+  color: white; /* Maintain white color for visited links */
+  text-decoration: none; /* Remove underline for visited links */
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1500;
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  background: rgba(44, 62, 80, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  z-index: 1501;
+  overflow: hidden;
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #64ffda;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.modal-close:hover {
+  background: rgba(231, 76, 60, 0.8);
+  border-color: #e74c3c;
+  transform: scale(1.1);
+}
+
+.modal-content {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(80vh - 120px);
+  color: #f8f9fa;
+}
+
+.modal-section {
+  margin-bottom: 2rem;
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section h3 {
+  color: #64ffda;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.modal-section p {
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modal-section ul {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.modal-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.modal-section li strong {
+  color: #64ffda;
+}
+
+/* Tech Highlights Grid */
+.tech-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tech-highlight {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-highlight h4 {
+  margin: 0 0 0.5rem 0;
+  color: #64ffda;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.tech-highlight p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border-left: 3px solid #64ffda;
+}
+
+.timeline-date {
+  color: #64ffda;
+  font-weight: 600;
+  min-width: 80px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-desc {
+  color: #f8f9fa;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
 }
 
 /* Responsive Design */
@@ -215,6 +422,36 @@
   .project-links {
     flex-direction: column;
   }
+
+  .modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .modal-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .tech-highlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .timeline-date {
+    min-width: auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -239,9 +476,33 @@
     font-size: 0.9rem;
   }
 
-  .project-btn {
+  .project-btn,
+  a.project-btn {
     padding: 0.6rem 0.8rem;
     font-size: 0.8rem;
+  }
+
+  .modal {
+    width: 98%;
+    max-height: 90vh;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+  }
+  
+  .modal-close {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
   }
 }
 
@@ -287,4 +548,28 @@
 
 .projectCard:nth-child(4) {
   animation-delay: 0.6s;
+}
+
+/* Additional styles for any other links in the project content */
+.projectCard a:not(.project-btn):not(.tech-tag) {
+  color: #64ffda;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.projectCard a:not(.project-btn):not(.tech-tag):hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Ensure modal links are styled consistently */
+.modal-content a {
+  color: #64ffda;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.modal-content a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
