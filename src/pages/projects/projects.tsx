@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './projects.css';
 
 const Projects: React.FC = () => {
   const [isVRModalOpen, setIsVRModalOpen] = useState(false);
   const [isFullStackModalOpen, setIsFullStackModalOpen] = useState(false);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isVRModalOpen || isFullStackModalOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [isVRModalOpen, isFullStackModalOpen]);
 
   const handleLinkClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
