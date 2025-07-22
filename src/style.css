@@ -40,7 +40,7 @@ body {
 
 .page-header h1 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-weight: 600;
@@ -48,7 +48,7 @@ body {
 
 .page-header .header-subtitle {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #bdc3c7;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   font-style: italic;
