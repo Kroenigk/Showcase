@@ -5,9 +5,11 @@ import Skills from './pages/skills/skills';
 import Projects from './pages/projects/projects';
 import Resume from './pages/resume/resume';
 import Sidebar from './sidebar/sidebar';
+import Assistant from './assistant/assistant';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -15,6 +17,10 @@ function App() {
 
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+  };
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
   };
 
   return (
@@ -39,6 +45,11 @@ function App() {
               <p className="header-subtitle">
                 Computer Science Student | Project Management Certified
               </p>
+            </div>
+
+            {/* Chat Assistant in Header */}
+            <div className="header-chat">
+              <Assistant isOpen={isChatOpen} onToggle={toggleChat} />
             </div>
           </div>
         </header>

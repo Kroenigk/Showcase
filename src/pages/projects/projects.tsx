@@ -53,13 +53,13 @@ const Projects: React.FC = () => {
           </div>
           <p>
             A dynamic tool to calculate estimated academic workload using
-            Angular and SQLite. Features real-time calculations, data
+            TypeScript and Vite. Features real-time calculations, data
             persistence, and an intuitive user interface for academic planning.
           </p>
           <div className="tech-stack">
-            <span className="tech-tag">Angular</span>
             <span className="tech-tag">Github Workflow</span>
             <span className="tech-tag">TypeScript</span>
+            <span className="tech-tag">Vite</span>
             <span className="tech-tag">CSS</span>
             <span className="tech-tag">NPM</span>
             <span className="tech-tag">Unit Testing</span>
@@ -134,7 +134,7 @@ const Projects: React.FC = () => {
           <div className="tech-stack">
             <span className="tech-tag">React</span>
             <span className="tech-tag">Node.js</span>
-            <span className="tech-tag">SQL</span>
+            <span className="tech-tag">SQLite</span>
             <span className="tech-tag">REST APIs</span>
             <span className="tech-tag">Hapi.js</span>
             <span className="tech-tag">Jest</span>
@@ -176,6 +176,8 @@ const Projects: React.FC = () => {
             <span className="tech-tag">TypeScript</span>
             <span className="tech-tag">Vite</span>
             <span className="tech-tag">GitHub Pages</span>
+            <span className="tech-tag">CSS</span>
+            <span className="tech-tag">NPM</span>
           </div>
           <div className="project-links">
             <a
