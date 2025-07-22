@@ -20,7 +20,6 @@ function App() {
   return (
     <Router basename="/Showcase">
       <div className="app-container">
-        {/* Fixed Hamburger Button - Always visible */}
         <button
           className={`hamburger-button ${isSidebarOpen ? 'open' : ''}`}
           onClick={toggleSidebar}
@@ -31,7 +30,6 @@ function App() {
           <span></span>
         </button>
 
-        {/* Fixed Page Header */}
         <header className="page-header">
           <div
             className={`header-content ${isSidebarOpen ? 'sidebar-open' : ''}`}
@@ -63,7 +61,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* Fixed Page Footer */}
+        {/* Page Footer */}
         <footer className="page-footer">
           <div className="footer-content">
             <div className="footer-left">

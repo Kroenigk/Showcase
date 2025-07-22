@@ -11,7 +11,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
 
   const handleNavigation = (path: string) => {
     navigate(path);
-    onClose(); // Close sidebar after navigation
+    onClose();
   };
 
   return (

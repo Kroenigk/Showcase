@@ -68,7 +68,9 @@ const Projects: React.FC = () => {
             <button
               className="project-btn"
               onClick={() =>
-                handleLinkClick('https://ohiouniversity.github.io/WorkEstimator/')
+                handleLinkClick(
+                  'https://ohiouniversity.github.io/WorkEstimator/'
+                )
               }
             >
               View Demo
@@ -76,7 +78,9 @@ const Projects: React.FC = () => {
             <button
               className="project-btn secondary"
               onClick={() =>
-                handleLinkClick('https://github.com/OhioUniversity/WorkEstimator')
+                handleLinkClick(
+                  'https://github.com/OhioUniversity/WorkEstimator'
+                )
               }
             >
               Source Code
@@ -104,7 +108,10 @@ const Projects: React.FC = () => {
             <span className="tech-tag">Unit Testing</span>
           </div>
           <div className="project-links">
-            <button className="project-btn" onClick={() => alert('Demo coming soon!')}>
+            <button
+              className="project-btn"
+              onClick={() => alert('Demo coming soon!')}
+            >
               View Demo
             </button>
             <button className="project-btn secondary" onClick={openVRModal}>
@@ -144,7 +151,10 @@ const Projects: React.FC = () => {
             >
               See program
             </a>
-            <button className="project-btn secondary" onClick={openFullStackModal}>
+            <button
+              className="project-btn secondary"
+              onClick={openFullStackModal}
+            >
               Learn More
             </button>
           </div>
@@ -216,8 +226,8 @@ const Projects: React.FC = () => {
                 <h3>My Role & Responsibilities</h3>
                 <ul>
                   <li>
-                    <strong>Team Lead:</strong> Managed a cross-functional team of 4
-                    developers
+                    <strong>Team Lead:</strong> Managed a cross-functional team
+                    of 4 developers
                   </li>
                   <li>
                     <strong>VR Development:</strong> Implemented Oculus SDK
@@ -232,8 +242,8 @@ const Projects: React.FC = () => {
                     deliverables throughout semester
                   </li>
                   <li>
-                    <strong>UI/UX Design:</strong> Created intuitive VR interfaces
-                    and user interactions
+                    <strong>UI/UX Design:</strong> Created intuitive VR
+                    interfaces and user interactions
                   </li>
                 </ul>
               </div>
@@ -251,8 +261,8 @@ const Projects: React.FC = () => {
                   <div className="tech-highlight">
                     <h4>⚡ Physics Engine</h4>
                     <p>
-                      Unity's physics system optimized for VR with realistic object
-                      interactions
+                      Unity's physics system optimized for VR with realistic
+                      object interactions
                     </p>
                   </div>
                   <div className="tech-highlight">
@@ -284,7 +294,8 @@ const Projects: React.FC = () => {
                   <div className="timeline-item">
                     <span className="timeline-date">Week 4-8</span>
                     <span className="timeline-desc">
-                      Core VR mechanics, hand tracking, and basic crafting system
+                      Core VR mechanics, hand tracking, and basic crafting
+                      system
                     </span>
                   </div>
                   <div className="timeline-item">
@@ -317,15 +328,17 @@ const Projects: React.FC = () => {
                 ✕
               </button>
             </div>
-            
+
             <div className="modal-content">
               <div className="modal-section">
                 <h3>Internship Overview</h3>
                 <p>
-                  As a Software Engineering Intern at Ohio University's Office of Information Technology, 
-                  I contribute to enterprise-level web applications that serve the university community. 
-                  My work spans both frontend and backend development, with a focus on creating scalable, 
-                  maintainable solutions for complex business requirements.
+                  As a Software Engineering Intern at Ohio University's Office
+                  of Information Technology, I contribute to enterprise-level
+                  web applications that serve the university community. My work
+                  spans both frontend and backend development, with a focus on
+                  creating scalable, maintainable solutions for complex business
+                  requirements.
                 </p>
               </div>
 
@@ -334,19 +347,31 @@ const Projects: React.FC = () => {
                 <div className="tech-highlights">
                   <div className="tech-highlight">
                     <h4>📊 Student Information System</h4>
-                    <p>Enhanced frontend components using Angular and TypeScript, improving user experience and data visualization</p>
+                    <p>
+                      Enhanced frontend components using Angular and TypeScript,
+                      improving user experience and data visualization
+                    </p>
                   </div>
                   <div className="tech-highlight">
                     <h4>🔌 REST API Development</h4>
-                    <p>Built and optimized backend services using Hapi.js framework with comprehensive error handling</p>
+                    <p>
+                      Built and optimized backend services using Hapi.js
+                      framework with comprehensive error handling
+                    </p>
                   </div>
                   <div className="tech-highlight">
                     <h4>🗄️ Database Optimization</h4>
-                    <p>Designed efficient SQL queries and database schemas using Knex.js for improved performance</p>
+                    <p>
+                      Designed efficient SQL queries and database schemas using
+                      Knex.js for improved performance
+                    </p>
                   </div>
                   <div className="tech-highlight">
                     <h4>🧪 Testing & Quality Assurance</h4>
-                    <p>Implemented comprehensive unit testing with Jest and Node Testing frameworks</p>
+                    <p>
+                      Implemented comprehensive unit testing with Jest and Node
+                      Testing frameworks
+                    </p>
                   </div>
                 </div>
               </div>
@@ -354,12 +379,30 @@ const Projects: React.FC = () => {
               <div className="modal-section">
                 <h3>Technical Responsibilities</h3>
                 <ul>
-                  <li><strong>Frontend Development:</strong> Built responsive web interfaces using Angular, React, and TypeScript</li>
-                  <li><strong>Backend Services:</strong> Developed RESTful APIs with Hapi.js, Joi validation, and Knex query builder</li>
-                  <li><strong>Database Management:</strong> Designed and optimized SQL databases for enterprise applications</li>
-                  <li><strong>Testing & Debugging:</strong> Implemented comprehensive test suites and performed code debugging</li>
-                  <li><strong>Code Review:</strong> Participated in peer code reviews and maintained coding standards</li>
-                  <li><strong>Agile Development:</strong> Collaborated in sprint planning and daily standups using JIRA</li>
+                  <li>
+                    <strong>Frontend Development:</strong> Built responsive web
+                    interfaces using Angular, React, and TypeScript
+                  </li>
+                  <li>
+                    <strong>Backend Services:</strong> Developed RESTful APIs
+                    with Hapi.js, Joi validation, and Knex query builder
+                  </li>
+                  <li>
+                    <strong>Database Management:</strong> Designed and optimized
+                    SQL databases for enterprise applications
+                  </li>
+                  <li>
+                    <strong>Testing & Debugging:</strong> Implemented
+                    comprehensive test suites and performed code debugging
+                  </li>
+                  <li>
+                    <strong>Code Review:</strong> Participated in peer code
+                    reviews and maintained coding standards
+                  </li>
+                  <li>
+                    <strong>Agile Development:</strong> Collaborated in sprint
+                    planning and daily standups using JIRA
+                  </li>
                 </ul>
               </div>
 
@@ -368,27 +411,40 @@ const Projects: React.FC = () => {
                 <div className="timeline">
                   <div className="timeline-item">
                     <span className="timeline-date">Frontend</span>
-                    <span className="timeline-desc">Angular, React, TypeScript, HTML5, CSS3, responsive design</span>
+                    <span className="timeline-desc">
+                      Angular, React, TypeScript, HTML5, CSS3, responsive design
+                    </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Backend</span>
-                    <span className="timeline-desc">Node.js, Hapi.js, RESTful APIs, Joi validation, Knex.js</span>
+                    <span className="timeline-desc">
+                      Node.js, Hapi.js, RESTful APIs, Joi validation, Knex.js
+                    </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Database</span>
-                    <span className="timeline-desc">SQL Server, PostgreSQL, database design, query optimization</span>
+                    <span className="timeline-desc">
+                      SQL Server, PostgreSQL, database design, query
+                      optimization
+                    </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">DevOps</span>
-                    <span className="timeline-desc">Git, GitHub Workflows, CI/CD pipelines, NPM, VS Code</span>
+                    <span className="timeline-desc">
+                      Git, GitHub Workflows, CI/CD pipelines, NPM, VS Code
+                    </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Testing</span>
-                    <span className="timeline-desc">Jest, Node Testing, unit testing, integration testing</span>
+                    <span className="timeline-desc">
+                      Jest, Node Testing, unit testing, integration testing
+                    </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Project Mgmt</span>
-                    <span className="timeline-desc">JIRA, Agile methodology, sprint planning, code reviews</span>
+                    <span className="timeline-desc">
+                      JIRA, Agile methodology, sprint planning, code reviews
+                    </span>
                   </div>
                 </div>
               </div>
@@ -396,14 +452,17 @@ const Projects: React.FC = () => {
               <div className="modal-section">
                 <h3>Professional Growth</h3>
                 <p>
-                  This internship has provided invaluable experience in enterprise software development, 
-                  working with legacy systems while implementing modern development practices. I've gained 
-                  expertise in full-stack development workflows, collaborative coding environments, and 
-                  the challenges of maintaining large-scale applications serving thousands of users.
+                  This internship has provided invaluable experience in
+                  enterprise software development, working with legacy systems
+                  while implementing modern development practices. I've gained
+                  expertise in full-stack development workflows, collaborative
+                  coding environments, and the challenges of maintaining
+                  large-scale applications serving thousands of users.
                 </p>
                 <p>
-                  The experience has strengthened my understanding of software architecture, database design, 
-                  and the importance of writing maintainable, well-tested code in professional environments.
+                  The experience has strengthened my understanding of software
+                  architecture, database design, and the importance of writing
+                  maintainable, well-tested code in professional environments.
                 </p>
               </div>
             </div>
