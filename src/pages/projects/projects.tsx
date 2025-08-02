@@ -69,7 +69,7 @@ const Projects: React.FC = () => {
               className="project-btn"
               onClick={() =>
                 handleLinkClick(
-                  'https://ohiouniversity.github.io/WorkEstimator/'
+                  'https://www.ohio.edu/instructional-design/initiatives/digital-toolboxes/digital-toolbox-workload-estimator'
                 )
               }
             >
