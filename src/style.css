@@ -10,10 +10,13 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 #root {
   display: block;
+  width: 100%;
 }
 
 /* Header */
@@ -32,7 +35,7 @@ body {
 
 .page-header .header-content {
   display: flex;
-  justify-content: space-between; /* Changed from flex-start to space-between */
+  justify-content: space-between;
   align-items: center;
   max-width: 1500px;
   margin: 0 auto;
@@ -54,11 +57,10 @@ body {
   font-style: italic;
 }
 
-/* Container for chat assistant in header */
 .header-chat {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Push to right side */
+  margin-left: auto;
 }
 
 /* Footer */
@@ -81,6 +83,7 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .page-footer .footer-left p {
@@ -234,30 +237,16 @@ body {
   content: ' 📄';
 }
 
-/* Responsive Design */
+/* Mobile-First Responsive Design */
 @media (max-width: 768px) {
+  .page-header {
+    padding: 0.75rem 1rem;
+  }
+
   .page-header .header-content {
-    flex-direction: row; /* Keep horizontal on mobile */
+    flex-direction: row;
     justify-content: space-between;
     gap: 0.5rem;
-  }
-  
-  .page-header h1 {
-    font-size: 1.3rem; /* Slightly smaller on mobile */
-  }
-  
-  .page-header .header-subtitle {
-    font-size: 0.7rem;
-  }
-  
-  .header-chat {
-    margin-left: 0.5rem; /* Smaller margin on mobile */
-  }
-}
-
-@media (max-width: 480px) {
-  .page-header .header-content {
-    padding: 0.75rem 1rem; /* Reduced padding on very small screens */
   }
   
   .page-header h1 {
@@ -265,7 +254,151 @@ body {
   }
   
   .page-header .header-subtitle {
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+  
+  .header-chat {
+    margin-left: 0.5rem;
+  }
+
+  .page-footer {
+    padding: 0.5rem 1rem;
+  }
+
+  .page-footer .footer-content {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .page-footer .footer-left p {
+    font-size: 0.8rem;
+    margin: 0.25rem 0;
+  }
+
+  .page-footer .footer-right {
+    gap: 1rem;
+  }
+
+  .page-footer .footer-right a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  /* Home Page Mobile */
+  .homePage {
+    gap: 2rem;
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
+
+  .topBar h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .aboutMe {
+    padding: 1.5rem 1rem;
+  }
+
+  .aboutMe p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .navigation {
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .navigation button {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .page-header h1 {
+    font-size: 1rem;
+  }
+  
+  .page-header .header-subtitle {
     font-size: 0.65rem;
+    display: none; /* Hide subtitle on very small screens */
+  }
+
+  .page-footer {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .page-footer .footer-left p {
+    font-size: 0.7rem;
+  }
+
+  .page-footer .footer-right a {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  /* Home Page Very Small Mobile */
+  .homePage {
+    gap: 1.5rem;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .topBar h1 {
+    font-size: 1.8rem;
+  }
+
+  .aboutMe {
+    padding: 1rem 0.5rem;
+  }
+
+  .aboutMe p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .navigation button {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape orientation on small devices */
+@media (max-width: 768px) and (orientation: landscape) {
+  .homePage {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    justify-content: flex-start;
+    padding-top: 6rem; /* Account for header */
+  }
+
+  .topBar h1 {
+    font-size: 2rem;
+  }
+
+  .aboutMe p {
+    font-size: 1rem;
+  }
+
+  .navigation {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .navigation button {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    margin: 0.25rem;
   }
 }
 
@@ -295,4 +428,27 @@ body {
 
 .homePage > *:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+/* Touch improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .navigation button:hover {
+    transform: none;
+    background-color: rgba(52, 152, 219, 0.8);
+  }
+
+  .navigation button:active {
+    background-color: rgba(41, 128, 185, 0.9);
+    transform: scale(0.98);
+  }
+
+  .page-footer .footer-right a:hover {
+    background: none;
+    color: #ffffff;
+  }
+
+  .page-footer .footer-right a:active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #64ffda;
+  }
 }

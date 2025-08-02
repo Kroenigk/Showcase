@@ -52,13 +52,21 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    const currentInput = input.trim(); // Store input before clearing
+    const currentInput = input.trim();
     setInput("");
     setIsLoading(true);
 
     try {
+      // Check if API key exists
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error("API key not found");
+      }
+
+      console.log("Making API request..."); // Debug log
+
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
         {
           method: "POST",
           headers: {
@@ -69,38 +77,129 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
               {
                 parts: [
                   {
-                    text: `You are an AI assistant for Kylie Roenigk's portfolio website. Kylie is a Computer Science student at Ohio University with Project Management certification. She's currently working as a Software Engineering Intern at Ohio University's Office of Information Technology.
+                    text: `You are an AI assistant for Kylie Roenigk's portfolio website. 
 
-Key information about Kylie:
-- Skills: TypeScript/JavaScript, Python, C++/C#, Java, React, Angular, Node.js, SQL databases, VR development with Unity, Hapi.js, Jest
-- Current Projects: 
-  * Workload Estimator (Angular/SQLite) - A dynamic tool for calculating academic workload
-  * Alchemy Artisans VR Game (Unity/C#) - VR crafting game with Oculus integration and hand gesture recognition
-  * Full-stack web applications at internship - Professional web apps with backend API development and database design
-  * Developer Showcase - This portfolio site built with React, TypeScript, and Vite
-- Experience: Software Engineering Intern at OU OIT (API development with Hapi.js, database design, frontend development with Angular/React, unit testing with Jest)
-- Education: Computer Science major at Ohio University, expected graduation May 2027, 4.0 GPA
-- Achievements: Arnold Engineering Scholarship, Valedictorian Class of 2023
+🎓 ABOUT KYLIE ROENIGK
 
-Please provide helpful, conversational responses about Kylie's background, skills, and projects. Keep responses concise but informative (2-3 sentences max). If asked about something not in her portfolio, politely redirect to what you do know about her.
+📚 EDUCATION
+• Bachelor of Science in Computer Science
+• Ohio University (Expected Graduation: May 2027)
+• GPA: 4.0/4.0
 
-User question: ${currentInput}`
+💼 PROFESSIONAL EXPERIENCE
+• Current: Software Engineering Intern at Ohio University Office of Information Technology
+• Previous: Technology Intern at Woodridge Local Schools (May 2021 – June 2023)
+• Upcoming: Computer Science Student Ambassador for Ohio University (2025–2026)
+
+💻 TECHNICAL SKILLS
+Programming Languages:
+• TypeScript, JavaScript, Python, C++, C#, Java, SQL
+
+Frameworks & Technologies:
+• Frontend: React, Angular, HTML5, CSS3
+• Backend: Node.js, Hapi.js, RESTful APIs
+• Database: SQLite, SQL Server, PostgreSQL
+• Development Tools: Unity (VR), GitHub Actions, Docker, Jest
+• Specialties: Full-stack development, VR development, API design
+
+🚀 NOTABLE PROJECTS
+• Workload Estimator: Typescript application using Vite for academic planning and workload analysis
+• Alchemy Artisans: Immersive VR crafting game built with Unity3D and Oculus SDK, featuring hand gesture recognition
+• Portfolio Showcase: Personal website built with Vite, TypeScript, and React, showcasing professional work and achievements
+• Enterprise Web Applications: Professional full-stack applications developed during internship
+
+🏆 ACHIEVEMENTS & RECOGNITION
+• Arnold Engineering Scholarship recipient
+• Valedictorian, Class of 2023
+• Maintained 4.0 GPA throughout university studies
+• Computer Science Student Ambassador for Russ College of Engineering and Technology
+
+🎯 CAREER ASPIRATIONS
+Graduate School Plans:
+• Master's degree in Data Science and Machine Learning in Germany
+• Focus on ethical AI applications across multiple disciplines
+• Preference for hands-on, research-based programs with internship opportunities
+
+Professional Interests:
+• Full-stack web development
+• Machine learning and data science applications
+• Virtual and augmented reality technologies
+• Ethical AI and responsible technology development
+
+🌍 PERSONAL VALUES & GOALS
+Core Values:
+• Continuous learning and self-improvement
+• Work-life balance and cross-cultural exploration
+• Supporting peers and helping others succeed
+• Ethical technology development
+
+Long-term Vision:
+• Work internationally in technology sector
+• Contribute to cutting-edge research in ML/AI
+• Design impactful tools with global relevance
+• Bridge technology and ethical applications
+
+🗣️ LANGUAGES & BACKGROUND
+• Native English speaker
+• United States citizenship
+• Strong interest in international collaboration
+
+---
+
+Please provide helpful, conversational responses about Kylie's background, skills, and projects. Keep responses concise (2-3 sentences) and engaging. If asked about topics outside her portfolio, politely redirect to her documented experience and achievements.
+
+User Question: ${currentInput}`
                   }
                 ]
+              }
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              topK: 40,
+              topP: 0.95,
+              maxOutputTokens: 1024,
+            },
+            safetySettings: [
+              {
+                category: "HARM_CATEGORY_HARASSMENT",
+                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+              },
+              {
+                category: "HARM_CATEGORY_HATE_SPEECH", 
+                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+              },
+              {
+                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+              },
+              {
+                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                threshold: "BLOCK_MEDIUM_AND_ABOVE"
               }
             ]
           })
         }
       );
 
+      console.log("Response status:", response.status); // Debug log
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error("API Error Response:", errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
       }
 
       const data = await response.json();
-      const botResponse =
-        data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "I'm sorry, I couldn't process that request. Please try asking something else about Kylie's portfolio.";
+      console.log("API Response:", data); // Debug log
+
+      let botResponse = "I'm sorry, I couldn't generate a response.";
+      
+      if (data.candidates && data.candidates.length > 0) {
+        const candidate = data.candidates[0];
+        if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+          botResponse = candidate.content.parts[0].text;
+        }
+      }
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -111,10 +210,25 @@ User question: ${currentInput}`
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
-      console.error("Error calling Gemini API:", error);
+      console.error("Detailed error:", error);
+      
+      let errorText = "I'm having trouble connecting right now. Please try again!";
+      
+      if (error instanceof Error) {
+        if (error.message.includes("API key not found")) {
+          errorText = "API configuration issue. Please check the setup.";
+        } else if (error.message.includes("403")) {
+          errorText = "API access denied. Please check your API key permissions.";
+        } else if (error.message.includes("429")) {
+          errorText = "Too many requests. Please wait a moment and try again.";
+        } else if (error.message.includes("400")) {
+          errorText = "Invalid request. Please try rephrasing your question.";
+        }
+      }
+
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "I'm sorry, I'm having trouble connecting right now. Please try again in a moment, or feel free to explore Kylie's portfolio directly!",
+        text: errorText,
         isBot: true,
         timestamp: new Date(),
       };
