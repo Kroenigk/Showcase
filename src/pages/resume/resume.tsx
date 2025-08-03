@@ -19,7 +19,7 @@ const Resume: React.FC = () => {
             LinkedIn
           </a>
         </div>
-        <a href="public/Kylie_Roenigk_Resume.pdf" download>
+        <a href="/Kylie_Roenigk_Resume.pdf" type="application/pdf" download>
           <button className="download-btn">Download Resume</button>
         </a>
       </div>
