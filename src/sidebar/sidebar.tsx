@@ -40,6 +40,11 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
               📄 Resume
             </button>
           </li>
+          <li>
+            <button onClick={() => handleNavigation('/about')}>
+              👤 About Me
+            </button>
+          </li>
         </ul>
       </nav>
     </div>

@@ -54,16 +54,19 @@ const Resume: React.FC = () => {
             </p>
             <ul>
               <li>
-                Developed full-stack web applications using C++, JavaScript, and
-                TypeScript.
+                Built and maintained full-stack web applications using
+                TypeScript, contributing to scalable and responsive system
+                design.
               </li>
               <li>
-                Designed backend features with Hapi, Joi, and Knex; implemented
-                SQL-based data solutions.
+                Designed and implemented backend features using Hapi, Joi, and
+                Knex, with structured SQL-based solutions for robust data
+                handling.
               </li>
               <li>
-                Enhanced debugging and unit testing using Node Testing and
-                improved routing efficiency.
+                Strengthened application reliability through unit testing, and
+                optimized backend routing for improved performance and
+                maintainability.
               </li>
             </ul>
           </div>
@@ -75,14 +78,26 @@ const Resume: React.FC = () => {
             </p>
             <ul>
               <li>
-                Contributed to software upgrades and front-end development using
-                Angular, Git, NPM, and VS Code.
+                Upgraded and maintained full-stack university web applications,
+                resolving both frontend and backend issues; all systems are
+                actively deployed and used by Ohio University.
               </li>
               <li>
-                Collaborated in agile team meetings to solve technical issues
-                and enhance existing systems.
+                Leveraged Skaffold, Kubernetes, and Docker to build, test, and
+                deploy applications to the university’s internal cluster;
+                automated workflows using GitHub Actions and CI/CD pipelines.
               </li>
-              <li>Utilized JIRA for task management and sprint tracking.</li>
+              <li>
+                Designed, developed, and deployed a new web application with
+                user-customizable styling, published for both internal and
+                external use by Ohio University.
+              </li>
+              <li>
+                Collaborated with the SSEP team via JIRA and Microsoft Teams;
+                restored a key Docker-based Node.js training project after a
+                year of inactivity and updated onboarding materials for future
+                cohorts.
+              </li>
             </ul>
           </div>
 
@@ -92,12 +107,18 @@ const Resume: React.FC = () => {
               <em>May 2021 – June 2023 | Peninsula, Ohio</em>
             </p>
             <ul>
-              <li>Diagnosed and repaired over 100 Chromebooks.</li>
               <li>
-                Provided tech support for software/network issues across school
-                buildings.
+                Diagnosed and repaired over 100 Chromebooks, replacing screens,
+                motherboards, and other components.
               </li>
-              <li>Contributed to large-scale tech deployments.</li>
+              <li>
+                Provided technical support across multiple school buildings for
+                software and network issues.
+              </li>
+              <li>
+                Contributed to large-scale district-wide tech deployments,
+                ensuring successful implementation and user adoption.
+              </li>
             </ul>
           </div>
 
@@ -108,12 +129,14 @@ const Resume: React.FC = () => {
             </p>
             <ul>
               <li>
-                Represented the Russ College through tours, events, and alumni
-                engagement.
+                Represented the Russ College of Engineering by leading tours,
+                promoting programs to prospective students, and engaging with
+                alumni and donors at campus events.
               </li>
               <li>
-                Strengthened public speaking and networking through outreach and
-                collaboration.
+                Strengthened public speaking and networking skills through
+                outreach, recruitment, and collaboration with university
+                leadership
               </li>
             </ul>
           </div>
@@ -130,14 +153,20 @@ const Resume: React.FC = () => {
             </p>
             <ul>
               <li>
-                Led development of Alchemy Artisans VR game for Oculus in Unity
-                3D.
+                Led development of Alchemy Artisans, a Unity 3D VR game for
+                Oculus featuring immersive object interaction and a handwritten
+                crafting system.
               </li>
               <li>
-                Implemented crafting, item recognition, and a player-driven
-                economy.
+                Implemented a tag-based item recognition system, automatic item
+                respawns, and a player-driven crafting economy, enabling users
+                to fulfill customer requests and earn in-game currency for shop
+                purchases
               </li>
-              <li>Managed a team of 4 through the semester-long project.</li>
+              <li>
+                Coordinated a team of four throughout a semester-long project,
+                delivering a fully integrated and showcased VR experience.
+              </li>
             </ul>
           </div>
 
@@ -148,10 +177,14 @@ const Resume: React.FC = () => {
             </p>
             <ul>
               <li>
-                Built with TypeScript and Vite, enabling real-time task
-                estimation.
+                Developed a responsive Custom Workload Estimator using
+                TypeScript and Vite, allowing users to input tasks, customize
+                categories, and calculate time commitments in real-time
               </li>
-              <li>Deployed to GitHub Pages for fast, responsive use.</li>
+              <li>
+                Deployed the app on GitHub Pages with a fast, single-page
+                architecture optimized for usability and cross-device access
+              </li>
             </ul>
           </div>
         </div>
@@ -166,19 +199,23 @@ const Resume: React.FC = () => {
               TypeScript, C#
             </div>
             <div className="skill-category">
-              <strong>Web Dev:</strong> HTML, CSS, Angular, Node.js, SQL, REST
-              APIs
+              <strong>Web Dev:</strong> HTML/CSS, Angular, Node.js, SQL/SQLite,
+              RESTful APIs, Web Application Development
             </div>
             <div className="skill-category">
-              <strong>Tools:</strong> Git, VS Code, JIRA, NPM, Hapi, Joi, Knex
+              <strong>Tools:</strong> Git, VS Code, JIRA, NPM, Hapi, Joi, Knex,
+              GitHub Workflow, Docker, Skaffold, Vite, Unit Testing with
+              Jest/Node.js
             </div>
             <div className="skill-category">
-              <strong>Engineering:</strong> Agile, Debugging, Troubleshooting,
-              Database Design
+              <strong>Software Engineering:</strong> Agile Development,
+              end-to-end Troubleshooting, Software Upgrades, Database Design,
+              CI/DC Pipeline
             </div>
             <div className="skill-category">
-              <strong>Professional:</strong> Project Management, Communication,
-              Teamwork
+              <strong>Professional Skills:</strong> Project Management,
+              Technical Communication, Team Collaboration, Task Delegation,
+              Workflow Automation
             </div>
           </div>
         </div>

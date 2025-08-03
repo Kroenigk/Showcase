@@ -62,6 +62,7 @@ const Projects: React.FC = () => {
             <span className="tech-tag">Vite</span>
             <span className="tech-tag">CSS</span>
             <span className="tech-tag">NPM</span>
+            <span className="tech-tag">CI/CD Pipeline</span>
             <span className="tech-tag">Unit Testing</span>
           </div>
           <div className="project-links">
@@ -178,6 +179,8 @@ const Projects: React.FC = () => {
             <span className="tech-tag">GitHub Pages</span>
             <span className="tech-tag">CSS</span>
             <span className="tech-tag">NPM</span>
+            <span className="tech-tag">CI/CD Pipeline</span>
+            <span className="tech-tag">AI Chatbot Integration</span>
           </div>
           <div className="project-links">
             <a
@@ -237,7 +240,8 @@ const Projects: React.FC = () => {
                   </li>
                   <li>
                     <strong>Game Mechanics:</strong> Designed and coded crafting
-                    system and item recognition
+                    system, item recognition, item respawn mechanics, and shop
+                    system.
                   </li>
                   <li>
                     <strong>Project Management:</strong> Coordinated sprints and
@@ -296,20 +300,22 @@ const Projects: React.FC = () => {
                   <div className="timeline-item">
                     <span className="timeline-date">Week 4-8</span>
                     <span className="timeline-desc">
-                      Core VR mechanics, hand tracking, and basic crafting
+                      Core VR mechanics, player environment, and basic crafting
                       system
                     </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Week 9-12</span>
                     <span className="timeline-desc">
-                      Advanced features, UI polish, and economy implementation
+                      Advanced features, customer interactions, and economy
+                      implementation
                     </span>
                   </div>
                   <div className="timeline-item">
                     <span className="timeline-date">Week 13-15</span>
                     <span className="timeline-desc">
-                      Testing, optimization, and final presentation
+                      Unit testing, optimization, bug fixes, particle effects,
+                      sound effects, and final presentation
                     </span>
                   </div>
                 </div>
@@ -340,7 +346,7 @@ const Projects: React.FC = () => {
                   web applications that serve the university community. My work
                   spans both frontend and backend development, with a focus on
                   creating scalable, maintainable solutions for complex business
-                  requirements.
+                  requirements as well as maintaining existing web applications.
                 </p>
               </div>
 

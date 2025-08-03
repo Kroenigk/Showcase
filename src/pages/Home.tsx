@@ -16,9 +16,9 @@ const Home: React.FC = () => {
 
       <div className="aboutMe">
         <p>
-          Hi, I’m Kylie — a Computer Science student with a passion for crafting
-          clean, intuitive digital experiences. This showcase highlights the
-          skills and projects I’ve built along the way
+          Hi, I’m Kylie — a Computer Science student building clean, intuitive
+          software. This showcase highlights my technical skills, projects, and
+          creative problem-solving in action.
         </p>
       </div>
 
@@ -31,6 +31,9 @@ const Home: React.FC = () => {
         </button>
         <button type="button" onClick={() => handleNavigation('/resume')}>
           View Resume
+        </button>
+        <button type="button" onClick={() => handleNavigation('/about')}>
+          About Me
         </button>
       </div>
     </div>

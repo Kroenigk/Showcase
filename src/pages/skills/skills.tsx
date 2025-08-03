@@ -14,9 +14,11 @@ const Skills: React.FC = () => {
             <h3>💻 Programming Languages</h3>
             <ul>
               <li>TypeScript / JavaScript</li>
-              <li>Python</li>
-              <li>C++ / C#</li>
+              <li>C#</li>
+              <li>C++</li>
               <li>Java</li>
+              <li>SQLite / SQL</li>
+              <li>Bash / Shell</li>
             </ul>
           </div>
 
@@ -29,6 +31,8 @@ const Skills: React.FC = () => {
               <li>Vite</li>
               <li>Node.js</li>
               <li>Web Components</li>
+              <li>Jest</li>
+              <li>Unit Testing</li>
             </ul>
           </div>
 
@@ -41,6 +45,12 @@ const Skills: React.FC = () => {
               <li>REST APIs</li>
               <li>VS Code</li>
               <li>JIRA</li>
+              <li>Postman</li>
+              <li>Figma</li>
+              <li>Docker</li>
+              <li>NPM Packages</li>
+              <li>Skaffold / Kubernetes</li>
+              <li>Vite</li>
             </ul>
           </div>
 
@@ -51,8 +61,10 @@ const Skills: React.FC = () => {
               <li>Agile Development</li>
               <li>Team Collaboration</li>
               <li>Problem Solving</li>
+              <li>Troubleshooting</li>
               <li>Technical Documentation</li>
               <li>Code Review</li>
+              <li>Mentoring</li>
             </ul>
           </div>
         </div>

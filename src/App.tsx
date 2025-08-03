@@ -6,6 +6,7 @@ import Projects from './pages/projects/projects';
 import Resume from './pages/resume/resume';
 import Sidebar from './sidebar/sidebar';
 import Assistant from './assistant/assistant';
+import About from './pages/About/about';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -43,7 +44,7 @@ function App() {
             <div>
               <h1>Kylie Roenigk</h1>
               <p className="header-subtitle">
-                Computer Science Student | Project Management Certified
+                Computer Science Student | Software Engineering Intern
               </p>
             </div>
 
@@ -69,6 +70,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
 

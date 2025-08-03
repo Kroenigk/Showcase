@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import "./assistant.css";
+import { useState, useRef, useEffect } from 'react';
+import './assistant.css';
 
 interface Message {
   id: string;
@@ -16,19 +16,19 @@ interface AssistantProps {
 const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: "1",
+      id: '1',
       text: "Hi! I'm Kylie's portfolio assistant. I can help you learn more about her skills, projects, and experience. What would you like to know?",
       isBot: true,
       timestamp: new Date(),
     },
   ]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -51,26 +51,26 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    setMessages(prev => [...prev, userMessage]);
     const currentInput = input.trim();
-    setInput("");
+    setInput('');
     setIsLoading(true);
 
     try {
       // Check if API key exists
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
       if (!apiKey) {
-        throw new Error("API key not found");
+        throw new Error('API key not found');
       }
 
-      console.log("Making API request..."); // Debug log
+      console.log('Making API request...'); // Debug log
 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             contents: [
@@ -148,10 +148,10 @@ Long-term Vision:
 
 Please provide helpful, conversational responses about Kylie's background, skills, and projects. Keep responses concise (2-3 sentences) and engaging. If asked about topics outside her portfolio, politely redirect to her documented experience and achievements.
 
-User Question: ${currentInput}`
-                  }
-                ]
-              }
+User Question: ${currentInput}`,
+                  },
+                ],
+              },
             ],
             generationConfig: {
               temperature: 0.7,
@@ -161,42 +161,48 @@ User Question: ${currentInput}`
             },
             safetySettings: [
               {
-                category: "HARM_CATEGORY_HARASSMENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                category: 'HARM_CATEGORY_HARASSMENT',
+                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
               },
               {
-                category: "HARM_CATEGORY_HATE_SPEECH", 
-                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                category: 'HARM_CATEGORY_HATE_SPEECH',
+                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
               },
               {
-                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
               },
               {
-                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE"
-              }
-            ]
-          })
+                category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+              },
+            ],
+          }),
         }
       );
 
-      console.log("Response status:", response.status); // Debug log
+      console.log('Response status:', response.status); // Debug log
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error("API Error Response:", errorText);
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        console.error('API Error Response:', errorText);
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${errorText}`
+        );
       }
 
       const data = await response.json();
-      console.log("API Response:", data); // Debug log
+      console.log('API Response:', data); // Debug log
 
       let botResponse = "I'm sorry, I couldn't generate a response.";
-      
+
       if (data.candidates && data.candidates.length > 0) {
         const candidate = data.candidates[0];
-        if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+        if (
+          candidate.content &&
+          candidate.content.parts &&
+          candidate.content.parts.length > 0
+        ) {
           botResponse = candidate.content.parts[0].text;
         }
       }
@@ -208,21 +214,23 @@ User Question: ${currentInput}`
         timestamp: new Date(),
       };
 
-      setMessages((prev) => [...prev, botMessage]);
+      setMessages(prev => [...prev, botMessage]);
     } catch (error) {
-      console.error("Detailed error:", error);
-      
-      let errorText = "I'm having trouble connecting right now. Please try again!";
-      
+      console.error('Detailed error:', error);
+
+      let errorText =
+        "I'm having trouble connecting right now. Please try again!";
+
       if (error instanceof Error) {
-        if (error.message.includes("API key not found")) {
-          errorText = "API configuration issue. Please check the setup.";
-        } else if (error.message.includes("403")) {
-          errorText = "API access denied. Please check your API key permissions.";
-        } else if (error.message.includes("429")) {
-          errorText = "Too many requests. Please wait a moment and try again.";
-        } else if (error.message.includes("400")) {
-          errorText = "Invalid request. Please try rephrasing your question.";
+        if (error.message.includes('API key not found')) {
+          errorText = 'API configuration issue. Please check the setup.';
+        } else if (error.message.includes('403')) {
+          errorText =
+            'API access denied. Please check your API key permissions.';
+        } else if (error.message.includes('429')) {
+          errorText = 'Too many requests. Please wait a moment and try again.';
+        } else if (error.message.includes('400')) {
+          errorText = 'Invalid request. Please try rephrasing your question.';
         }
       }
 
@@ -232,14 +240,14 @@ User Question: ${currentInput}`
         isBot: true,
         timestamp: new Date(),
       };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -248,7 +256,7 @@ User Question: ${currentInput}`
   const clearChat = () => {
     setMessages([
       {
-        id: "1",
+        id: '1',
         text: "Hi! I'm Kylie's portfolio assistant. I can help you learn more about her skills, projects, and experience. What would you like to know?",
         isBot: true,
         timestamp: new Date(),
@@ -257,18 +265,18 @@ User Question: ${currentInput}`
   };
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   return (
     <>
       {/* Chat Toggle Button */}
       <button
-        className={`chat-toggle ${isOpen ? "open" : ""}`}
+        className={`chat-toggle ${isOpen ? 'open' : ''}`}
         onClick={onToggle}
-        aria-label={isOpen ? "Close chat" : "Open chat assistant"}
+        aria-label={isOpen ? 'Close chat' : 'Open chat assistant'}
       >
-        {isOpen ? "✕" : "💬"}
+        {isOpen ? '✕' : '💬'}
       </button>
 
       {/* Chat Window */}
@@ -298,10 +306,10 @@ User Question: ${currentInput}`
           </div>
 
           <div className="chat-messages">
-            {messages.map((message) => (
+            {messages.map(message => (
               <div
                 key={message.id}
-                className={`message ${message.isBot ? "bot" : "user"}`}
+                className={`message ${message.isBot ? 'bot' : 'user'}`}
               >
                 <div className="message-content">
                   <div className="message-text">{message.text}</div>
@@ -332,7 +340,7 @@ User Question: ${currentInput}`
               ref={inputRef}
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={e => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ask about Kylie's skills, projects, or experience..."
               disabled={isLoading}
@@ -344,7 +352,7 @@ User Question: ${currentInput}`
               className="send-button"
               aria-label="Send message"
             >
-              {isLoading ? "⏳" : "📤"}
+              {isLoading ? '⏳' : '📤'}
             </button>
           </div>
         </div>
