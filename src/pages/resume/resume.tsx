@@ -1,7 +1,19 @@
 import React from 'react';
 import './resume.css';
+// Import the PDF file
+import resumePDF from '../../../assets/KylieRoenigkResume.pdf';
 
 const Resume: React.FC = () => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resumePDF;
+    link.download = 'Kylie_Roenigk_Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="resume-container">
       <div className="resume-header">
@@ -19,9 +31,9 @@ const Resume: React.FC = () => {
             LinkedIn
           </a>
         </div>
-        <a href="/Kylie_Roenigk_Resume.pdf" type="application/pdf" download>
-          <button className="download-btn">Download Resume</button>
-        </a>
+        <button className="download-btn" onClick={handleDownload}>
+          Download Resume
+        </button>
       </div>
 
       <section className="resume-section">
