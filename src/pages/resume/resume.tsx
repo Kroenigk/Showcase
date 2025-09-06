@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './resume.css';
 // Import the PDF file
 import resumePDF from '../../../assets/KylieRoenigkResume.pdf';

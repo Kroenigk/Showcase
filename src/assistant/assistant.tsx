@@ -52,34 +52,46 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input.trim();
     setInput('');
     setIsLoading(true);
 
     try {
-      // Always use backend for chat requests
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages }),
-      });
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (!apiKey) throw new Error('API key not found');
+
+      const response = await fetch(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [
+              {
+                role: 'system',
+                content: `You are an AI assistant for Kylie Roenigk's portfolio website. Answer questions about Kylie, her skills, projects, and experience. Be concise and helpful.`,
+              },
+              ...messages.map(m => ({
+                role: m.isBot ? 'assistant' : 'user',
+                content: m.text,
+              })),
+              {
+                role: 'user',
+                content: currentInput,
+              },
+            ],
+            max_tokens: 512,
+            temperature: 0.7,
+          }),
+        }
+      );
 
       if (!response.ok) {
-        let errorText = `HTTP error! status: ${response.status}`;
-        if (response.status === 400) {
-          errorText = 'Invalid request. Please try rephrasing your question.';
-        } else if (response.status === 403) {
-          errorText = 'API access denied. Please check your API key permissions.';
-        } else if (response.status === 429) {
-          errorText = 'Too many requests. Please wait a moment and try again.';
-        }
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: errorText,
-          isBot: true,
-          timestamp: new Date(),
-        };
-        setMessages(prev => [...prev, errorMessage]);
-        return;
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
@@ -95,21 +107,25 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
       };
 
       setMessages(prev => [...prev, botMessage]);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Detailed error:', error);
+
       let errorText =
         "I'm having trouble connecting right now. Please try again!";
+
       if (error instanceof Error) {
         if (error.message.includes('API key not found')) {
           errorText = 'API configuration issue. Please check the setup.';
         } else if (error.message.includes('403')) {
-          errorText = 'API access denied. Please check your API key permissions.';
+          errorText =
+            'API access denied. Please check your API key permissions.';
         } else if (error.message.includes('429')) {
           errorText = 'Too many requests. Please wait a moment and try again.';
         } else if (error.message.includes('400')) {
           errorText = 'Invalid request. Please try rephrasing your question.';
         }
       }
+
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: errorText,
