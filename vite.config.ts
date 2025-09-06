@@ -22,12 +22,19 @@ export default defineConfig({
     port: 3000,
     open: true,
     cors: true,
+    proxy: {
+      // dev-only proxy to local Express
+      "/api": { target: "http://localhost:5174", changeOrigin: true }
+    }
   },
 
   // Preview server configuration (for 'npm run preview')
   preview: {
     port: 4173,
     open: true,
+    proxy: {
+      "/api": { target: "http://localhost:5174", changeOrigin: true }
+    }
   },
 
   // CSS configuration

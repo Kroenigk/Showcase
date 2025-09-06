@@ -57,51 +57,38 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
     setIsLoading(true);
 
     try {
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-      if (!apiKey) throw new Error('API key not found');
+      // Use proxy in dev, public API URL in prod
+      const API_BASE = import.meta.env.PROD ? import.meta.env.VITE_API_URL : '';
 
-      const response = await fetch(
-        'https://api.openai.com/v1/chat/completions',
+      // Build chat payload (same content you previously sent to OpenAI)
+      const chat = [
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`,
-          },
-          body: JSON.stringify({
-            model: 'gpt-4o-mini',
-            messages: [
-              {
-                role: 'system',
-                content: `You are an AI assistant for Kylie Roenigk's portfolio website. Answer questions about Kylie, her skills, projects, and experience. Be concise and helpful.`,
-              },
-              ...messages.map(m => ({
-                role: m.isBot ? 'assistant' : 'user',
-                content: m.text,
-              })),
-              {
-                role: 'user',
-                content: currentInput,
-              },
-            ],
-            max_tokens: 512,
-            temperature: 0.7,
-          }),
-        }
-      );
+          role: 'system',
+          content:
+            "You are an AI assistant for Kylie Roenigk's portfolio website. Answer questions about Kylie, her skills, projects, and experience. Be concise and helpful.",
+        },
+        ...messages.map(m => ({
+          role: m.isBot ? 'assistant' : 'user',
+          content: m.text,
+        })),
+        { role: 'user', content: currentInput },
+      ];
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      const res = await fetch(`${API_BASE}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: chat }),
+      });
 
-      const data = await response.json();
-      const botResponse =
-        data.choices?.[0]?.message?.content ||
-        "I'm sorry, I couldn't process that request.";
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      const data = await res.json();
+      const botText =
+        data.reply ?? "I'm sorry, I couldn't process that request.";
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: botResponse,
+        text: botText,
         isBot: true,
         timestamp: new Date(),
       };
@@ -109,26 +96,9 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
       console.error('Detailed error:', error);
-
-      let errorText =
-        "I'm having trouble connecting right now. Please try again!";
-
-      if (error instanceof Error) {
-        if (error.message.includes('API key not found')) {
-          errorText = 'API configuration issue. Please check the setup.';
-        } else if (error.message.includes('403')) {
-          errorText =
-            'API access denied. Please check your API key permissions.';
-        } else if (error.message.includes('429')) {
-          errorText = 'Too many requests. Please wait a moment and try again.';
-        } else if (error.message.includes('400')) {
-          errorText = 'Invalid request. Please try rephrasing your question.';
-        }
-      }
-
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: errorText,
+        text: "I'm having trouble connecting right now. Please try again!",
         isBot: true,
         timestamp: new Date(),
       };
@@ -138,7 +108,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
@@ -205,9 +175,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
               >
                 <div className="message-content">
                   <div className="message-text">{message.text}</div>
-                  <div className="message-time">
-                    {formatTime(message.timestamp)}
-                  </div>
+                  <div className="message-time">{formatTime(message.timestamp)}</div>
                 </div>
               </div>
             ))}
@@ -233,7 +201,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
               placeholder="Ask about Kylie's skills, projects, or experience..."
               disabled={isLoading}
               maxLength={500}
@@ -254,3 +222,4 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
 };
 
 export default Assistant;
+
