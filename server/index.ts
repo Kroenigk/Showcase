@@ -1,7 +1,7 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import OpenAI from "openai";
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import OpenAI from 'openai';
 
 dotenv.config();
 
@@ -13,25 +13,28 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-app.post("/api/chat", async (req, res) => {
+app.post('/api/chat', async (req, res) => {
   try {
     const { messages } = req.body as {
-      messages: Array<{ role: "system" | "user" | "assistant"; content: string }>;
+      messages: Array<{
+        role: 'system' | 'user' | 'assistant';
+        content: string;
+      }>;
     };
 
     if (!Array.isArray(messages)) {
-      return res.status(400).json({ error: "messages must be an array" });
+      return res.status(400).json({ error: 'messages must be an array' });
     }
 
     const resp = await client.responses.create({
-      model: "gpt-4o-mini",
+      model: 'gpt-4o-mini',
       input: messages,
     });
 
     res.json({ reply: resp.output_text });
   } catch (e: any) {
-    console.error("OpenAI error:", e?.message || e);
-    res.status(500).json({ error: "OpenAI request failed" });
+    console.error('OpenAI error:', e?.message || e);
+    res.status(500).json({ error: 'OpenAI request failed' });
   }
 });
 

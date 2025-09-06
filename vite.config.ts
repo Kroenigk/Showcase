@@ -24,8 +24,8 @@ export default defineConfig({
     cors: true,
     proxy: {
       // dev-only proxy to local Express
-      "/api": { target: "http://localhost:5174", changeOrigin: true }
-    }
+      '/api': { target: 'http://localhost:5174', changeOrigin: true },
+    },
   },
 
   // Preview server configuration (for 'npm run preview')
@@ -33,8 +33,8 @@ export default defineConfig({
     port: 4173,
     open: true,
     proxy: {
-      "/api": { target: "http://localhost:5174", changeOrigin: true }
-    }
+      '/api': { target: 'http://localhost:5174', changeOrigin: true },
+    },
   },
 
   // CSS configuration
