@@ -17,12 +17,14 @@ export default defineConfig({
       },
     },
   },
-
   // Development server configuration
   server: {
     port: 3000,
     open: true,
     cors: true,
+    proxy: {
+      "/api": "http://localhost:5174",
+    },
   },
 
   // Preview server configuration (for 'npm run preview')
