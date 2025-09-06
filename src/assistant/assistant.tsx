@@ -57,155 +57,47 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onToggle }) => {
     setIsLoading(true);
 
     try {
-      // Check if API key exists
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      if (!apiKey) {
-        throw new Error('API key not found');
-      }
-
-      console.log('Making API request...'); // Debug log
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (!apiKey) throw new Error('API key not found');
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
+        'https://api.openai.com/v1/chat/completions',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            contents: [
+            model: 'gpt-4o', // or 'gpt-4o-mini' if available
+            messages: [
               {
-                parts: [
-                  {
-                    text: `You are an AI assistant for Kylie Roenigk's portfolio website. 
-
-🎓 ABOUT KYLIE ROENIGK
-
-📚 EDUCATION
-• Bachelor of Science in Computer Science
-• Ohio University (Expected Graduation: May 2027)
-• GPA: 4.0/4.0
-
-💼 PROFESSIONAL EXPERIENCE
-• Current: Software Engineering Intern at Ohio University Office of Information Technology
-• Previous: Technology Intern at Woodridge Local Schools (May 2021 – June 2023)
-• Upcoming: Computer Science Student Ambassador for Ohio University (2025–2026)
-
-💻 TECHNICAL SKILLS
-Programming Languages:
-• TypeScript, JavaScript, Python, C++, C#, Java, SQL
-
-Frameworks & Technologies:
-• Frontend: React, Angular, HTML5, CSS3
-• Backend: Node.js, Hapi.js, RESTful APIs
-• Database: SQLite, SQL Server, PostgreSQL
-• Development Tools: Unity (VR), GitHub Actions, Docker, Jest
-• Specialties: Full-stack development, VR development, API design
-
-🚀 NOTABLE PROJECTS
-• Workload Estimator: Typescript application using Vite for academic planning and workload analysis
-• Alchemy Artisans: Immersive VR crafting game built with Unity3D and Oculus SDK, featuring hand gesture recognition
-• Portfolio Showcase: Personal website built with Vite, TypeScript, and React, showcasing professional work and achievements
-• Enterprise Web Applications: Professional full-stack applications developed during internship
-
-🏆 ACHIEVEMENTS & RECOGNITION
-• Arnold Engineering Scholarship recipient
-• Valedictorian, Class of 2023
-• Maintained 4.0 GPA throughout university studies
-• Computer Science Student Ambassador for Russ College of Engineering and Technology
-
-🎯 CAREER ASPIRATIONS
-Graduate School Plans:
-• Master's degree in Data Science and Machine Learning in Germany
-• Focus on ethical AI applications across multiple disciplines
-• Preference for hands-on, research-based programs with internship opportunities
-
-Professional Interests:
-• Full-stack web development
-• Machine learning and data science applications
-• Virtual and augmented reality technologies
-• Ethical AI and responsible technology development
-
-🌍 PERSONAL VALUES & GOALS
-Core Values:
-• Continuous learning and self-improvement
-• Work-life balance and cross-cultural exploration
-• Supporting peers and helping others succeed
-• Ethical technology development
-
-Long-term Vision:
-• Work internationally in technology sector
-• Contribute to cutting-edge research in ML/AI
-• Design impactful tools with global relevance
-• Bridge technology and ethical applications
-
-🗣️ LANGUAGES & BACKGROUND
-• Native English speaker
-• United States citizenship
-• Strong interest in international collaboration
-
----
-
-Please provide helpful, conversational responses about Kylie's background, skills, and projects. Keep responses concise (2-3 sentences) and engaging. If asked about topics outside her portfolio, politely redirect to her documented experience and achievements.
-
-User Question: ${currentInput}`,
-                  },
-                ],
+                role: 'system',
+                content: `You are an AI assistant for Kylie Roenigk's portfolio website. Answer questions about Kylie, her skills, projects, and experience. Be concise and helpful.`,
+              },
+              ...messages.map(m => ({
+                role: m.isBot ? 'assistant' : 'user',
+                content: m.text,
+              })),
+              {
+                role: 'user',
+                content: currentInput,
               },
             ],
-            generationConfig: {
-              temperature: 0.7,
-              topK: 40,
-              topP: 0.95,
-              maxOutputTokens: 1024,
-            },
-            safetySettings: [
-              {
-                category: 'HARM_CATEGORY_HARASSMENT',
-                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-              },
-              {
-                category: 'HARM_CATEGORY_HATE_SPEECH',
-                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-              },
-              {
-                category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-              },
-              {
-                category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-                threshold: 'BLOCK_MEDIUM_AND_ABOVE',
-              },
-            ],
+            max_tokens: 512,
+            temperature: 0.7,
           }),
         }
       );
 
-      console.log('Response status:', response.status); // Debug log
-
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('API Error Response:', errorText);
-        throw new Error(
-          `HTTP error! status: ${response.status}, message: ${errorText}`
-        );
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log('API Response:', data); // Debug log
-
-      let botResponse = "I'm sorry, I couldn't generate a response.";
-
-      if (data.candidates && data.candidates.length > 0) {
-        const candidate = data.candidates[0];
-        if (
-          candidate.content &&
-          candidate.content.parts &&
-          candidate.content.parts.length > 0
-        ) {
-          botResponse = candidate.content.parts[0].text;
-        }
-      }
+      const botResponse =
+        data.choices?.[0]?.message?.content ||
+        "I'm sorry, I couldn't process that request.";
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),

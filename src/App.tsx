@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Skills from './pages/skills/skills';
-import Projects from './pages/projects/projects';
-import Resume from './pages/resume/resume';
-import Sidebar from './sidebar/sidebar';
+
 import Assistant from './assistant/assistant';
 import About from './pages/About/about';
+import Home from './pages/Home';
+import Projects from './pages/projects/projects';
+import Resume from './pages/resume/resume';
+import Skills from './pages/skills/skills';
+import Sidebar from './sidebar/sidebar';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -78,7 +79,7 @@ function App() {
         <footer className="page-footer">
           <div className="footer-content">
             <div className="footer-left">
-              <p>&copy; 2024 Kylie Roenigk. All rights reserved.</p>
+              <p>&copy; 2025 Kylie Roenigk. All rights reserved.</p>
               <p>Built with React, TypeScript, and Vite</p>
             </div>
             <div className="footer-right">
