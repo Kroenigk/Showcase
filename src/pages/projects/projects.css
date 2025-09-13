@@ -94,8 +94,7 @@
   border: 1px solid;
 }
 
-.project-status:contains('Active'),
-.project-status:contains('Live') {
+.project-status.live {
   background: rgba(46, 204, 113, 0.2);
   border-color: #2ecc71;
   color: #2ecc71;

@@ -195,6 +195,16 @@
   color: #bdc3c7;
 }
 
+:root {
+  --highlight-color: #64ffda;
+}
+
+.resume-section strong,
+.skill-category strong {
+  color: var(--highlight-color);
+  font-weight: 600;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .resume-container {

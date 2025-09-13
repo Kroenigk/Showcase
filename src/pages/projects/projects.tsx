@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
         <div className="projectCard">
           <div className="project-header">
             <h2>🧮 Workload Estimator</h2>
-            <span className="project-status">Active</span>
+            <span className="project-status">Completed</span>
           </div>
           <p>
             A dynamic tool to calculate estimated academic workload using

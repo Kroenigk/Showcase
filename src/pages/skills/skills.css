@@ -1,4 +1,3 @@
-/* Skills Page - Matching current theme */
 .skillsPage {
   display: flex;
   flex-direction: column;
@@ -129,22 +128,7 @@
 
 .skill-category li {
   animation: slideInLeft 0.5s ease-out forwards;
-}
-
-.skill-category:nth-child(1) li {
-  animation-delay: 0.1s;
-}
-
-.skill-category:nth-child(2) li {
-  animation-delay: 0.2s;
-}
-
-.skill-category:nth-child(3) li {
-  animation-delay: 0.3s;
-}
-
-.skill-category:nth-child(4) li {
-  animation-delay: 0.4s;
+  animation-delay: var(--delay, 0.1s);
 }
 
 /* Responsive Design */

@@ -83,7 +83,7 @@ body {
   align-items: center;
   max-width: 1500px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .page-footer .footer-left p {
@@ -317,7 +317,7 @@ body {
 
   .page-header .header-subtitle {
     font-size: 0.65rem;
-    display: none; /* Hide subtitle on very small screens */
+    display: none;
   }
 
   .page-footer {
@@ -364,7 +364,7 @@ body {
     gap: 1.5rem;
     padding: 1.5rem 1rem;
     justify-content: flex-start;
-    padding-top: 6rem; /* Account for header */
+    padding-top: 6rem;
   }
 
   .topBar h1 {

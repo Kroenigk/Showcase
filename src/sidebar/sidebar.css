@@ -142,10 +142,6 @@
   box-sizing: border-box;
 }
 
-.main-content.sidebar-open {
-  transform: translateX(40px);
-}
-
 /* Header Content Adjustments for Sidebar */
 .page-header .header-content {
   padding-left: 70px;
@@ -199,10 +195,6 @@
   .page-header .header-content {
     padding-left: 1rem;
     padding-right: 50px;
-  }
-
-  .page-header .header-content.sidebar-open {
-    margin-left: 0;
   }
 }
 

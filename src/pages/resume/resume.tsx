@@ -40,20 +40,22 @@ const Resume: React.FC = () => {
       <section className="resume-section">
         <h2>Education</h2>
         <div className="section-content">
-          <p>
-            <strong>
-              Ohio University, Russ College of Engineering and Technology
-            </strong>{' '}
-            — Athens, Ohio
-          </p>
-          <p>
-            Bachelor of Science in Computer Science and Certification in Project
-            Management
-          </p>
-          <p>
-            <em>Expected Graduation: May 2027</em>
-          </p>
-          <p>Cumulative GPA: 4.0</p>
+          <div className="experience-item">
+            <p>
+              <strong>
+                Ohio University, Russ College of Engineering and Technology
+              </strong>{' '}
+              — Athens, Ohio
+            </p>
+            <p>
+              Bachelor of Science in Computer Science and Certification in
+              Project Management
+            </p>
+            <p>
+              <em>Expected Graduation: May 2027</em>
+            </p>
+            <p>Cumulative GPA: 4.0</p>
+          </div>
         </div>
       </section>
 
