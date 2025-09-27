@@ -2,7 +2,7 @@ import React from 'react';
 
 import './resume.css';
 // Import the PDF file
-import resumePDF from '../../../assets/KylieRoenigkResume.pdf';
+import resumePDF from '@/KylieRoenigkResume.pdf';
 
 const Resume: React.FC = () => {
   const handleDownload = () => {

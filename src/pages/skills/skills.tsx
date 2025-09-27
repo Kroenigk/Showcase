@@ -1,11 +1,42 @@
 import React from 'react';
+
 import './skills.css';
+import { getFeaturedTechnologies } from '../../data/technologies';
 
 const Skills: React.FC = () => {
+  const allTechnologies = getFeaturedTechnologies(12);
+  // Create seamless scroll by duplicating the array
+  const seamlessTechnologies = [...allTechnologies, ...allTechnologies];
+
   return (
     <div className="skillsPage">
       <div className="topBar">
-        <h1>My Skills</h1>
+        <h1>Skills</h1>
+        <div className="tech-carousel-container">
+          <div className="carousel-fade-left"></div>
+          <div className="carousel-fade-right"></div>
+          <div className="tech-carousel-scroll">
+            {seamlessTechnologies.map((tech, index) => (
+              <a
+                key={`${tech.id}-${index}`}
+                href={tech.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tech-carousel-item"
+                title={`Learn more about ${tech.name}`}
+              >
+                <div className="tech-item-content">
+                  <img
+                    src={tech.icon}
+                    alt={`${tech.name} logo`}
+                    className="tech-carousel-logo"
+                  />
+                  <span className="tech-carousel-name">{tech.name}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="skillsContent">

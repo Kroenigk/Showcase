@@ -6,7 +6,7 @@ import OpenAI from 'openai';
 dotenv.config();
 
 const app = express();
-app.use(cors()); // if you will call it cross-origin in prod, this is fine
+app.use(cors());
 app.use(express.json());
 
 const client = new OpenAI({

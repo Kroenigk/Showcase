@@ -5,6 +5,11 @@ export default defineConfig({
   base: '/Showcase/',
   assetsInclude: ['**/*.pdf'],
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': '/src/assets',
+    },
+  },
 
   // Build configuration
   build: {

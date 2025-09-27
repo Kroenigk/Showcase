@@ -35,8 +35,6 @@ export default [
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
-      // Remove "project" if slow or not using project references
-      // parserOptions: { project: "./tsconfig.json" },
     },
     plugins: { '@typescript-eslint': tsPlugin, import: importPlugin },
     rules: {
